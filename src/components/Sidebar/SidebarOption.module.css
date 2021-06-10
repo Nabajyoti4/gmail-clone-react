@@ -6,7 +6,7 @@
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     cursor: pointer;
-    color: #010101;
+    color: #818181;
 }
 
 .sidebaroption>h3 {
@@ -16,8 +16,28 @@
     font-weight: 400;
 }
 
+.sidebaroption>.MuiSvgIcon-root {
+    padding: 5px;
+}
+
 
 .sidebaroption>p {
     display: none;
     font-weight: 300;
+}
+
+.sidebaroption:hover,
+.sidebaroption:hover>h3,
+.sidebaroption:hover>p {
+    background-color: #fcecec;
+    color: #c04b37;
+    font-weight: 800 !important;
+}
+
+.sidebaroption:hover>p {
+    display: inline;
+}
+
+.sidebaroption__active>p {
+    display: inline !important;
 }

@@ -2,7 +2,8 @@ import React from "react";
 import classes from "./SidebarOption.module.css";
 
 function SidebarOption(props) {
-  const { Icon, title, number } = props;
+    const { Icon, title, number, selected } = props;
+    
   return (
     <div className={classes.sidebaroption}>
       <Icon></Icon>
