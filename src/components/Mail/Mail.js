@@ -1,5 +1,7 @@
 import React from "react";
 import classes from "./Mail.module.css";
+import { useSelector } from "react-redux";
+import { selectedMail } from "../../features/mail-slice";
 
 //UI
 import { Button, IconButton } from "@material-ui/core";
@@ -19,6 +21,7 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 function Mail() {
   const history = useHistory();
+  const mail = useSelector(selectedMail);
 
   return (
     <div className={classes.mail}>
@@ -67,16 +70,18 @@ function Mail() {
 
       <div className={classes.mail__body}>
         <div className={classes.mail__bodyHeader}>
-          <h2>Header</h2>
+          <h2>{mail.subject}</h2>
           <LabelImportantIcon
             className={classes.mail__important}
           ></LabelImportantIcon>
-          <p>Title</p>
-          <p className={classes.mail__time}>10pm</p>
+          <p>{mail.to}</p>
+          <p className={classes.mail__time}>
+            {mail.time}
+          </p>
         </div>
 
         <div className={classes.mail__message}>
-          <p>This is message</p>
+          <p>{mail.description}</p>
         </div>
       </div>
     </div>

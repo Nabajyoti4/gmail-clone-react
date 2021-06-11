@@ -1,5 +1,7 @@
 import React from "react";
 import classes from "./EmailItems.module.css";
+import { useDispatch } from "react-redux";
+import { setSelectedMail } from "../../features/mail-slice";
 
 //UI
 import { Checkbox, IconButton } from "@material-ui/core";
@@ -9,11 +11,24 @@ import { useHistory } from "react-router";
 
 export default function EmailItems(props) {
   const { id, title, subject, description, time } = props;
-
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  const setSelectedMailHandler = () => {
+    dispatch(
+      setSelectedMail({
+        id,
+        title,
+        subject,
+        description,
+        time,
+      })
+    );
+    history.push("/mail");
+  };
 
   return (
-    <div onClick={() => history.push("/mail")} className={classes.emailItem}>
+    <div onClick={setSelectedMailHandler} className={classes.emailItem}>
       <div className={classes.emailItem__options}>
         <Checkbox></Checkbox>
         <IconButton>

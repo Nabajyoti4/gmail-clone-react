@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./EmailList.module.css";
 
 //Componet
@@ -18,7 +18,25 @@ import PeopleIcon from "@material-ui/icons/People";
 import LocalOfferIcon from "@material-ui/icons/LocalOffer";
 import EmailItems from "./EmailItems";
 
+import { db } from "../../firebase";
+
 function EmailList() {
+  const [emailList, setEmailList] = useState([]);
+
+  //get the list of emails
+  useEffect(() => {
+    db.collection("emails")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) =>
+        setEmailList(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }))
+        )
+      );
+  }, [emailList]);
+
   return (
     <div className={classes.emailList}>
       <div className={classes.emailList__settings}>
@@ -70,13 +88,19 @@ function EmailList() {
         ></Section>
       </div>
 
+      {/* Email list of user */}
+
       <div className={classes.emailList__list}>
-        <EmailItems
-          title="Twitch"
-          subject="Hey floow"
-          description="This is test"
-          time="10pm"
-        ></EmailItems>
+        {emailList.map(({ id, data: { to, subject, message, timestamp } }) => (
+          <EmailItems
+            key={id}
+            id={id}
+            title={to}
+            subject={subject}
+            description={message}
+            time={new Date(timestamp?.seconds * 1000).toUTCString()}
+          ></EmailItems>
+        ))}
       </div>
     </div>
   );
