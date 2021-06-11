@@ -70,14 +70,12 @@ function Mail() {
 
       <div className={classes.mail__body}>
         <div className={classes.mail__bodyHeader}>
-          <h2>{mail.subject}</h2>
+          <h2>{mail?.subject}</h2>
           <LabelImportantIcon
             className={classes.mail__important}
           ></LabelImportantIcon>
           <p>{mail.to}</p>
-          <p className={classes.mail__time}>
-            {mail.time}
-          </p>
+          <p className={classes.mail__time}>{mail.time}</p>
         </div>
 
         <div className={classes.mail__message}>
