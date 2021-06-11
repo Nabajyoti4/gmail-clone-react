@@ -5,6 +5,7 @@ import Header from "./components/UI/Header";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Mail from "./components/Mail/Mail";
 import EmailList from "./components/EmailList/EmailList";
+import SendMail from "./components/SendMail/SendMail";
 
 //components
 
@@ -25,6 +26,8 @@ function App() {
             </Route>
           </Switch>
         </div>
+
+        <SendMail></SendMail>
       </div>
     </Router>
   );
