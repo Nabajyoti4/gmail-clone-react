@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Sidebar.module.css";
+import { useDispatch } from "react-redux";
 
 //Ui
 import { Button, IconButton } from "@material-ui/core";
@@ -15,13 +16,20 @@ import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import PersonIcon from "@material-ui/icons/Person";
 import PhoneIcon from "@material-ui/icons/Phone";
 import DuoIcon from "@material-ui/icons/Duo";
+import { openSendMessage } from "../../features/mail-slice";
 
 function Sidebar() {
+  const dispatch = useDispatch();
+
+  const showForm = () => {
+    dispatch(openSendMessage());
+  };
   return (
     <div className={classes.sidebar}>
       <Button
         className={classes.sidebar__compose}
         startIcon={<AddIcon fontSize="large"></AddIcon>}
+        onClick={showForm}
       >
         Compose
       </Button>
