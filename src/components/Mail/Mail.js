@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { selectedMail } from "../../features/mail-slice";
 
 //UI
-import { Button, IconButton } from "@material-ui/core";
+import { IconButton } from "@material-ui/core";
 import MoveToInboxIcon from "@material-ui/icons/MoveToInbox";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ErrorIcon from "@material-ui/icons/Error";

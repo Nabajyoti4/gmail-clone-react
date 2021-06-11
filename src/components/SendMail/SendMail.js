@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./SendMail.module.css";
 import CloseIcon from "@material-ui/icons/Close";
-import { Button, IconButton } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { closeSendMessage } from "../../features/mail-slice";
@@ -14,7 +14,7 @@ function SendMail() {
   const {
     register,
     handleSubmit,
-    watch,
+
     formState: { errors },
   } = useForm();
 

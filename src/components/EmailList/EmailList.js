@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import classes from "./EmailList.module.css";
+import { useSelector } from "react-redux";
+import { authUser } from "../../features/user-slice";
 
 //Componet
 import Section from "./Section";
@@ -22,6 +24,7 @@ import { db } from "../../firebase";
 
 function EmailList() {
   const [emailList, setEmailList] = useState([]);
+  const user = useSelector(authUser);
 
   //get the list of emails
   useEffect(() => {
